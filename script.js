@@ -6,9 +6,10 @@ var specicals = ['!', '$', '%', '&', '(', ')', '*', '+', ',', '-', '.', '/', ':'
 var generateBtn = document.querySelector("#generate");
 
 
-function getpasswordOptions() {
-    var passwordLength = prompt('How many characters would you like your password to be?');
-        console.log(passwordLength);
+function getUserPasswordOptions() {
+    var length = parseInt(
+        prompt('How many characters would you like your password to be?'));
+        console.log(length);
     var hasNumbers = confirm('Would you like to include numbers?');
         console.log(hasNumbers);
     var hasLetters = confirm('Would you like to include lowercase letters?');
@@ -23,15 +24,15 @@ function getpasswordOptions() {
         alert ('Please include at least one of the options');
         return null;
     }
-    var passwordOptions = {
-        passwordLength: passwordLength,
+    var userPasswordOptions = {
+        length: length,
         hasNumbers: hasNumbers,
         hasLetters: hasLetters,
         hasCapitals: hasCapitals,
         hasSpecials: hasSpecials
     }      
-    console.log(passwordOptions);
-    return passwordOptions;
+    console.log(userPasswordOptions);
+    return userPasswordOptions;
     
 }
 function getRandom(arr) {
@@ -42,58 +43,46 @@ function getRandom(arr) {
   }
   
 
-// Write password to the #password input
-
   function generatePassword() {
-      var passwordOptions = getpasswordOptions();
+      var passwordOptions = getUserPasswordOptions();
 
       var result = [];
-      var userNumbers = [];
-      var userLetters = [];
-      var userCapitals = [];
-      var userSpecials = [];
-      var userLength = [];
       var userOptions = [];
       var passwordChoices = [];
 
- 
       if (passwordOptions.hasNumbers) {
-          userNumbers = userNumbers.concat(numbers);
-          userOptions.push(getRandom(numbers));
-          console.log(userOptions);
+          userOptions = userOptions.concat(numbers);
+          passwordChoices.push(getRandom(numbers));
+          console.log(passwordChoices);
       }
       if (passwordOptions.hasLetters) {
-          userLetters = userLetters.concat(letters);
-          userOptions.push(getRandom(letters));
-          console.log(userOptions);
+          userOptions = userOptions.concat(letters);
+          passwordChoices.push(getRandom(letters));
+          console.log(passwordChoices);
       }
       if (passwordOptions.hasCapitals) {
-          userCapitals = userCapitals.concat(capitals);
-          userOptions.push(getRandom(capitals));
-          console.log(userOptions);
+          userOptions = userOptions.concat(capitals);
+          passwordChoices.push(getRandom(capitals));
+          console.log(passwordChoices);
       }
       if (passwordOptions.hasSpecials) {
-          userSpecials = userSpecials.concat(specicals);
-          userOptions.push(getRandom(specicals));
-          console.log(userOptions);
+          userOptions = userOptions.concat(specicals);
+          passwordChoices.push(getRandom(specicals));
+          console.log(passwordChoices);
       }
-     
-      for (var i = 0; i < passwordOptions.passwordLength; i++) {
-        var userLength = getRandom(passwordOptions);
-        result.push(userLength);       
-    }
 
-      for (var i = 0; i < userOptions.length; i++) {
-        var userChoice = getRandom(userOptions);
+      for (var i = 0; i < passwordOptions.length; i++) {
+        var userOption = getRandom(userOptions);
     
-        result.push(userChoice);
+        result.push(userOption);
+        console.log(userOption);
       }
     
       for (var i = 0; i < passwordChoices.length; i++) {
         result[i] = passwordChoices[i];
       }
       console.log(result);
-      return result; 
+      return result.join(''); 
     }
 
     function writePassword() {
