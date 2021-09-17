@@ -1,5 +1,13 @@
 # Password_generator
-Random password generator
+generate a new random password!
+options:<br>
+length: must be between 8 and 128<br>
+characters options:<br>
+numbers<br>
+lowercase letters<br>
+uppercase letters <br>
+special characters <br>
+
 
 
 ## User Story

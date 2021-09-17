@@ -7,23 +7,49 @@ var generateBtn = document.querySelector("#generate");
 
 
 function getUserPasswordOptions() {
+    
     var length = parseInt(
-        prompt('How many characters would you like your password to be?'));
+        prompt ('How many characters would you like your password to contain?')
+    );
         console.log(length);
+        if (Number.isNaN(length)) {
+            alert('Password length must be provided as a number');
+            return null;
+        }
+            
+        
+        if (length < 8) {
+            alert('Password length must be at least 8 characters');
+            return null;
+        }
+            
+            
+        if (length > 128) {
+            alert('Password length must less than 129 characters');
+            return null;
+        }
+        
+       
+     
     var hasNumbers = confirm('Would you like to include numbers?');
         console.log(hasNumbers);
+
     var hasLetters = confirm('Would you like to include lowercase letters?');
         console.log(hasLetters);
+
     var hasCapitals = confirm('Would you like to include capital letters?');
         console.log(hasCapitals);
+
     var hasSpecials = confirm('Would you like to include special characters?');
         console.log(hasSpecials);
-    
 
+            
     if(hasNumbers, hasLetters, hasCapitals, hasSpecials === false) {
-        alert ('Please include at least one of the options');
+        alert ('Please include at least one of the options')
         return null;
     }
+           
+
     var userPasswordOptions = {
         length: length,
         hasNumbers: hasNumbers,
@@ -35,6 +61,7 @@ function getUserPasswordOptions() {
     return userPasswordOptions;
     
 }
+
 function getRandom(arr) {
     var randIndex = Math.floor(Math.random() * arr.length);
     var randElement = arr[randIndex];
