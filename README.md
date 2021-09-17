@@ -1,24 +1,27 @@
 # Password_generator
-generate a new random password!
-options:<br>
-length: must be between 8 and 128<br>
-characters options:<br>
-numbers<br>
-lowercase letters<br>
-uppercase letters <br>
-special characters <br>
+generate a new random password!<br><br>
+### options:
+```md<br>
+length:
+must be between 8 and 128
 
+characters options:
+numbers
+lowercase letters
+uppercase letters 
+special characters 
+```
 
 
 ## User Story
-md ```
+```md
 AS AN employee with access to sensitive data
 I WANT to randomly generate a password that meets certain criteria
 SO THAT I can create a strong password that provides greater security
 ```
 
 ## Acceptance Criteria
-md```
+```md
 GIVEN I need a new, secure password
 WHEN I click the button to generate a password
 THEN I am presented with a series of prompts for password criteria
